@@ -1,0 +1,946 @@
+import numpy as np
+
+>>> a = np.arange(6)
+>>> a2 = a[np.newaxis, :]
+>>> a2.shape
+(1, 6)
+
+>>> a = np.array([1, 2, 3, 4, 5, 6])
+
+>>> a = np.array([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]])
+
+>>> print(a[0])
+[1 2 3 4]
+
+[[0., 0., 0.],
+[1., 1., 1.]]
+
+>>> import numpy as np
+>>> a = np.array([1, 2, 3])
+
+>>> np.zeros(2)
+array([0., 0.])
+
+>>> np.ones(2)
+array([1., 1.])
+>>> # Create an empty array with 2 elements
+>>> np.empty(2)
+array([3.14, 42. ]) # may vary
+
+>>> np.arange(4)
+array([0, 1, 2, 3])
+
+>>> np.arange(2, 9, 2)
+array([2, 4, 6, 8])
+
+>>> np.linspace(0, 10, num=5)
+array([ 0. , 2.5, 5. , 7.5, 10. ])
+
+>>> x = np.ones(2, dtype=np.int64)
+>>> x
+array([1, 1])
+
+>>> arr = np.array([2, 1, 5, 3, 7, 4, 6, 8])
+
+>>> np.sort(arr)
+array([1, 2, 3, 4, 5, 6, 7, 8])
+
+>>> a = np.array([1, 2, 3, 4])
+>>> b = np.array([5, 6, 7, 8])
+
+>>> np.concatenate((a, b))
+array([1, 2, 3, 4, 5, 6, 7, 8])
+
+>>> x = np.array([[1, 2], [3, 4]])
+>>> y = np.array([[5, 6]])
+
+>>> np.concatenate((x, y), axis=0)
+array([[1, 2],
+ [3, 4],
+ [5, 6]])
+
+>>> array_example = np.array([[[0, 1, 2, 3],
+... [4, 5, 6, 7]],
+...
+... [[0, 1, 2, 3],
+... [4, 5, 6, 7]],
+...
+... [[0 ,1 ,2, 3],
+... [4, 5, 6, 7]]])
+
+>>> array_example.ndim
+3
+
+>>> array_example.size
+24
+
+>>> array_example.shape
+(3, 2, 4)
+
+>>> a = np.arange(6)
+>>> print(a)
+[0 1 2 3 4 5]
+>>> b = a.reshape(3, 2)
+>>> print(b)
+[[0 1]
+ [2 3]
+ [4 5]]
+
+>>> np.reshape(a, newshape=(1, 6), order='C')
+array([[0, 1, 2, 3, 4, 5]])
+
+>>> a = np.array([1, 2, 3, 4, 5, 6])
+>>> a.shape
+(6,)
+
+>>> a2 = a[np.newaxis, :]
+>>> a2.shape
+(1, 6)
+
+>>> row_vector = a[np.newaxis, :]
+>>> row_vector.shape
+(1, 6)
+
+>>> col_vector = a[:, np.newaxis]
+>>> col_vector.shape
+(6, 1)
+
+>>> a = np.array([1, 2, 3, 4, 5, 6])
+>>> a.shape
+(6,)
+
+>>> b = np.expand_dims(a, axis=1)
+>>> b.shape
+(6, 1)
+
+>>> c = np.expand_dims(a, axis=0)
+>>> c.shape
+(1, 6)
+
+>>> data = np.array([1, 2, 3])
+>>> data[1]
+2
+>>> data[0:2]
+array([1, 2])
+>>> data[1:]
+array([2, 3])
+>>> data[-2:]
+array([2, 3])
+
+>>> a = np.array([[1 , 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]])
+
+>>> print(a[a < 5])
+[1 2 3 4]
+
+>>> five_up = (a >= 5)
+>>> print(a[five_up])
+[ 5 6 7 8 9 10 11 12]
+
+>>> divisible_by_2 = a[a%2==0]
+>>> print(divisible_by_2)
+[ 2 4 6 8 10 12]
+
+>>> c = a[(a > 2) & (a < 11)]
+>>> print(c)
+[ 3 4 5 6 7 8 9 10]
+
+>>> five_up = (a > 5) | (a == 5)
+>>> print(five_up)
+[[False False False False]
+ [ True True True True]
+ [ True True True True]]
+
+>>> a = np.array([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]])
+
+>>> b = np.nonzero(a < 5)
+>>> print(b)
+(array([0, 0, 0, 0]), array([0, 1, 2, 3]))
+
+>>> list_of_coordinates= list(zip(b[0], b[1]))
+>>> for coord in list_of_coordinates:
+... print(coord)
+(0, 0)
+(0, 1)
+(0, 2)
+(0, 3)
+
+>>> print(a[b])
+[1 2 3 4]
+
+>>> not_there = np.nonzero(a == 42)
+>>> print(not_there)
+(array([], dtype=int64), array([], dtype=int64))
+
+>>> a = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+
+>>> arr1 = a[3:8]
+>>> arr1
+array([4, 5, 6, 7, 8])
+
+>>> a1 = np.array([[1, 1],
+... [2, 2]])
+>>> a2 = np.array([[3, 3],
+... [4, 4]])
+
+>>> np.vstack((a1, a2))
+array([[1, 1],
+ [2, 2],
+ [3, 3],
+ [4, 4]])
+
+>>> np.hstack((a1, a2))
+array([[1, 1, 3, 3],
+ [2, 2, 4, 4]])
+>>> x = np.arange(1, 25).reshape(2, 12)
+>>> x
+array([[ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+ [13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]])
+
+>>> np.hsplit(x, 3)
+ [array([[ 1, 2, 3, 4],
+ [13, 14, 15, 16]]), array([[ 5, 6, 7, 8],
+ [17, 18, 19, 20]]), array([[ 9, 10, 11, 12],
+ [21, 22, 23, 24]])]
+
+>>> np.hsplit(x, (3, 4))
+ [array([[ 1, 2, 3],
+ [13, 14, 15]]), array([[ 4],
+ [16]]), array([[ 5, 6, 7, 8, 9, 10, 11, 12],
+ [17, 18, 19, 20, 21, 22, 23, 24]])]
+
+>>> a = np.array([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]])
+
+>>> b1 = a[0, :]
+>>> b1
+array([1, 2, 3, 4])
+>>> b1[0] = 99
+>>> b1
+array([99, 2, 3, 4])
+>>> a
+array([[99, 2, 3, 4],
+ [ 5, 6, 7, 8],
+ [ 9, 10, 11, 12]])
+
+>>> b2 = a.copy()
+
+>>> data = np.array([1, 2])
+>>> ones = np.ones(2, dtype=int)
+>>> data + ones
+array([2, 3])
+
+>>> data - ones
+array([0, 1])
+>>> data * data
+array([1, 4])
+>>> data / data
+array([1., 1.])
+
+>>> a = np.array([1, 2, 3, 4])
+>>> a.sum()
+10
+
+>>> b = np.array([[1, 1], [2, 2]])
+
+>>> b.sum(axis=0)
+array([3, 3])
+
+>>> b.sum(axis=1)
+array([2, 4])
+
+>>> data = np.array([1.0, 2.0])
+>>> data * 1.6
+array([1.6, 3.2])
+
+>>> data.max()
+2.0
+>>> data.min()
+1.0
+>>> data.sum()
+3.0
+
+>>> a = np.array([[0.45053314, 0.17296777, 0.34376245, 0.5510652],
+... [0.54627315, 0.05093587, 0.40067661, 0.55645993],
+... [0.12697628, 0.82485143, 0.26590556, 0.56917101]])
+
+>>> a.sum()
+4.8595784
+
+>>> a.min()
+0.05093587
+
+>>> a.min(axis=0)
+array([0.12697628, 0.05093587, 0.26590556, 0.5510652 ])
+
+>>> data = np.array([[1, 2], [3, 4], [5, 6]])
+>>> data
+array([[1, 2],
+ [3, 4],
+ [5, 6]])
+
+>>> data[0, 1]
+2
+>>> data[1:3]
+array([[3, 4],
+ [5, 6]])
+>>> data[0:2, 0]
+array([1, 3])
+
+>>> data.max()
+6
+>>> data.min()
+1
+>>> data.sum()
+21
+
+>>> data = np.array([[1, 2], [5, 3], [4, 6]])
+>>> data
+array([[1, 2],
+ [5, 3],
+ [4, 6]])
+>>> data.max(axis=0)
+array([5, 6])
+>>> data.max(axis=1)
+array([2, 5, 6])
+
+>>> data = np.array([[1, 2], [3, 4]])
+>>> ones = np.array([[1, 1], [1, 1]])
+>>> data + ones
+array([[2, 3],
+ [4, 5]])
+
+>>> data = np.array([[1, 2], [3, 4], [5, 6]])
+>>> ones_row = np.array([[1, 1]])
+>>> data + ones_row
+array([[2, 3],
+ [4, 5],
+ [6, 7]])
+
+>>> np.ones((4, 3, 2))
+array([[[1., 1.],
+ [1., 1.],
+ [1., 1.]],
+ [[1., 1.],
+ [1., 1.],
+ [1., 1.]],
+ [[1., 1.],
+ [1., 1.],
+ [1., 1.]],
+ [[1., 1.],
+ [1., 1.],
+ [1., 1.]]])
+
+>>> np.ones(3)
+array([1., 1., 1.])
+>>> np.zeros(3)
+array([0., 0., 0.])
+>>> rng = np.random.default_rng() # the simplest way to generate
+random numbers
+>>> rng.random(3)
+array([0.63696169, 0.26978671, 0.04097352])
+
+>>> np.ones((3, 2))
+array([[1., 1.],
+ [1., 1.],
+ [1., 1.]])
+>>> np.zeros((3, 2))
+array([[0., 0.],
+ [0., 0.],
+ [0., 0.]])
+>>> rng.random((3, 2))
+array([[0.01652764, 0.81327024],
+ [0.91275558, 0.60663578],
+ [0.72949656, 0.54362499]]) # may vary
+
+>>> rng.integers(5, size=(2, 4))
+array([[2, 1, 1, 0],
+ [0, 0, 0, 4]]) # may vary
+
+>>> a = np.array([11, 11, 12, 13, 14, 15, 16, 17, 12, 13, 11, 14, 18,
+19, 20])
+
+>>> unique_values = np.unique(a)
+>>> print(unique_values)
+[11 12 13 14 15 16 17 18 19 20]
+
+>>> unique_values, indices_list = np.unique(a, return_index=True)
+>>> print(indices_list)
+[ 0 2 3 4 5 6 7 12 13 14]
+
+>>> unique_values, occurrence_count = np.unique(a, return_counts=True)
+>>> print(occurrence_count)
+[3 2 2 2 1 1 1 1 1 1]
+
+>>> a_2d = np.array([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [1,
+2, 3, 4]])
+
+>>> unique_values = np.unique(a_2d)
+>>> print(unique_values)
+[ 1 2 3 4 5 6 7 8 9 10 11 12]
+
+>>> unique_rows = np.unique(a_2d, axis=0)
+>>> print(unique_rows)
+[[ 1 2 3 4]
+ [ 5 6 7 8]
+ [ 9 10 11 12]]
+
+>>> unique_rows, indices, occurrence_count = np.unique(
+... a_2d, axis=0, return_counts=True, return_index=True)
+>>> print(unique_rows)
+[[ 1 2 3 4]
+ [ 5 6 7 8]
+ [ 9 10 11 12]]
+>>> print(indices)
+[0 1 2]
+>>> print(occurrence_count)
+[2 1 1]
+
+>>> data.reshape(2, 3)
+array([[1, 2, 3],
+ [4, 5, 6]])
+>>> data.reshape(3, 2)
+array([[1, 2],
+ [3, 4],
+ [5, 6]])
+
+>>> arr = np.arange(6).reshape((2, 3))
+>>> arr
+array([[0, 1, 2],
+ [3, 4, 5]])
+
+>>> arr.transpose()
+array([[0, 3],
+ [1, 4],
+ [2, 5]])
+
+>>> arr.T
+array([[0, 3],
+ [1, 4],
+ [2, 5]])
+
+>>> arr = np.array([1, 2, 3, 4, 5, 6, 7, 8])
+
+>>> reversed_arr = np.flip(arr)
+
+>>> print('Reversed Array: ', reversed_arr)
+Reversed Array: [8 7 6 5 4 3 2 1]
+
+>>> arr_2d = np.array([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]])
+
+>>> reversed_arr = np.flip(arr_2d)
+>>> print(reversed_arr)
+[[12 11 10 9]
+ [ 8 7 6 5]
+ [ 4 3 2 1]]
+
+>>> reversed_arr_rows = np.flip(arr_2d, axis=0)
+>>> print(reversed_arr_rows)
+[[ 9 10 11 12]
+ [ 5 6 7 8]
+ [ 1 2 3 4]]
+
+>>> reversed_arr_columns = np.flip(arr_2d, axis=1)
+>>> print(reversed_arr_columns)
+[[ 4 3 2 1]
+ [ 8 7 6 5]
+ [12 11 10 9]]
+
+>>> arr_2d[1] = np.flip(arr_2d[1])
+>>> print(arr_2d)
+[[ 1 2 3 4]
+ [ 8 7 6 5]
+ [ 9 10 11 12]]
+
+>>> arr_2d[:,1] = np.flip(arr_2d[:,1])
+>>> print(arr_2d)
+[[ 1 10 3 4]
+ [ 8 7 6 5]
+ [ 9 2 11 12]]
+
+>>> x = np.array([[1 , 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]])
+>>> x.flatten()
+array([ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
+>>> a1 = x.flatten()
+>>> a1[0] = 99
+>>> print(x) # Original array
+[[ 1 2 3 4]
+ [ 5 6 7 8]
+ [ 9 10 11 12]]
+>>> print(a1) # New array
+[99 2 3 4 5 6 7 8 9 10 11 12]
+
+>>> a2 = x.ravel()
+>>> a2[0] = 98
+>>> print(x) # Original array
+[[98 2 3 4]
+ [ 5 6 7 8]
+ [ 9 10 11 12]]
+>>> print(a2) # New array
+[98 2 3 4 5 6 7 8 9 10 11 12]
+
+>>> def double(a):
+... '''Return a * 2'''
+... return a * 2
+
+>>> a = np.array([1, 2, 3, 4, 5, 6])
+
+>>> np.save('filename', a)
+
+>>> b = np.load('filename.npy')
+
+>>> print(b)
+[1 2 3 4 5 6]
+
+>>> csv_arr = np.array([1, 2, 3, 4, 5, 6, 7, 8])
+
+>>> np.savetxt('new_file.csv', csv_arr)
+
+>>> np.loadtxt('new_file.csv')
+array([1., 2., 3., 4., 5., 6., 7., 8.])
+
+>>> import pandas as pd
+>>> # If all of your columns are the same type:
+>>> x = pd.read_csv('music.csv', header=0).values
+>>> print(x)
+[['Billie Holiday' 'Jazz' 1300000 27000000]
+ ['Jimmie Hendrix' 'Rock' 2700000 70000000]
+ ['Miles Davis' 'Jazz' 1500000 48000000]
+ ['SIA' 'Pop' 2000000 74000000]]
+
+>>> # You can also simply select the columns you need:
+>>> x = pd.read_csv('music.csv', usecols=['Artist', 'Plays']).values
+>>> print(x)
+[['Billie Holiday' 27000000]
+ ['Jimmie Hendrix' 70000000]
+ ['Miles Davis' 48000000]
+ ['SIA' 74000000]]
+>>> a = np.array([[-2.58289208, 0.43014843, -1.24082018, 1.59572603],
+... [ 0.99027828, 1.17150989, 0.94125714, -0.14692469],
+... [ 0.76989341, 0.81299683, -0.95068423, 0.11769564],
+... [ 0.20484034, 0.34784527, 1.96979195,
+0.51992837]])
+
+>>> df = pd.DataFrame(a)
+>>> print(df)
+ 0 1 2 3
+0 -2.582892 0.430148 -1.240820 1.595726
+1 0.990278 1.171510 0.941257 -0.146925
+2 0.769893 0.812997 -0.950684 0.117696
+3 0.204840 0.347845 1.969792 0.519928
+
+>>> np.savetxt('np.csv', a, fmt='%.2f', delimiter=',', header='1, 2,
+3, 4')
+
+$ cat np.csv
+# 1, 2, 3, 4
+-2.58,0.43,-1.24,1.60
+0.99,1.17,0.94,-0.15
+0.77,0.81,-0.95,0.12
+0.20,0.35,1.97,0.52
+
+>>> a = np.array([2, 1, 5, 7, 4, 6, 8, 14, 10, 9, 18, 20, 22])
+
+>>> x = np.linspace(0, 5, 20)
+>>> y = np.linspace(0, 10, 20)
+>>> plt.plot(x, y, 'purple') # line
+>>> plt.plot(x, y, 'o') # dots
+
+>>> fig = plt.figure()
+>>> ax = fig.add_subplot(projection='3d')
+>>> X = np.arange(-5, 5, 0.15)
+>>> Y = np.arange(-5, 5, 0.15)
+>>> X, Y = np.meshgrid(X, Y)
+>>> R = np.sqrt(X**2 + Y**2)
+>>> Z = np.sin(R)
+>>> ax.plot_surface(X, Y, Z, rstride=1, cstride=1, cmap='viridis')
+
+
+
+
+Membaca kode contoh
+Jika Anda belum merasa nyaman membaca tutorial yang berisi banyak kode, Anda bisa melakukannya
+tidak tahu bagaimana menafsirkan blok kode yang terlihat seperti ini:
+>>> a = np.arange(6)
+>>> a2 = a[np.sumbu baru, :]
+>>> a2.bentuk
+(1, 6)
+Jika Anda belum familiar dengan gaya ini, sangat mudah untuk memahaminya. Jika Anda melihat >>>, Anda sedang mencari
+pada input, atau kode yang akan Anda masukkan. Segala sesuatu yang tidak memiliki >>> di depannya adalah
+output, atau hasil menjalankan kode Anda. Ini adalah gaya yang Anda lihat saat menjalankan python
+baris perintah, tetapi jika Anda menggunakan IPython, Anda mungkin melihat gaya yang berbeda. Perhatikan bahwa ini adalah
+bukan bagian dari kode dan akan menyebabkan kesalahan jika diketik atau ditempelkan ke shell Python. Itu bisa saja
+diketik atau ditempel dengan aman ke shell IPython; >>> diabaikan.
+Apa perbedaan antara daftar Python dan a
+Array NumPy?
+NumPy memberi Anda beragam cara cepat dan efisien untuk membuat array dan
+memanipulasi data numerik di dalamnya. Sedangkan daftar Python dapat berisi tipe data yang berbeda
+dalam satu daftar, semua elemen dalam array NumPy harus homogen. Itu
+operasi matematika yang dimaksudkan untuk dilakukan pada array akan sangat luar biasa
+tidak efisien jika susunannya tidak homogen.
+Mengapa menggunakan NumPy?
+Array NumPy lebih cepat dan lebih kompak daripada daftar Python. Sebuah array mengkonsumsi lebih sedikit
+Memori dan nyaman untuk digunakan. NumPy menggunakan lebih sedikit memori untuk menyimpan data dan itu
+menyediakan mekanisme untuk menentukan tipe data. Hal ini memungkinkan kode untuk dioptimalkan bahkan
+lebih jauh.
+Apa itu larik?
+Array adalah struktur data pusat perpustakaan NumPy. Array adalah kisi-kisi nilai dan itu
+berisi informasi tentang data mentah, cara menemukan suatu elemen, dan cara menafsirkan suatu
+elemen. Ini memiliki kisi elemen yang dapat diindeks dengan berbagai cara. Elemennya semuanya
+tipe yang sama, disebut sebagai array
+dtype.
+Sebuah array dapat diindeks dengan tupel bilangan bulat non-negatif, dengan boolean, dengan array lain, atau
+dengan bilangan bulat. Peringkat array adalah jumlah dimensi. Bentuk arraynya adalah a
+tupel bilangan bulat memberikan ukuran array sepanjang setiap dimensi.
+Salah satu cara kita menginisialisasi array NumPy adalah dari daftar Python, menggunakan daftar bersarang untuk dua atau
+data berdimensi lebih tinggi.
+Misalnya:
+impor numpy sebagai np
+Kami mempersingkat nama yang diimpor menjadi np agar kode lebih mudah dibaca menggunakan NumPy. Ini adalah sebuah
+konvensi yang diadopsi secara luas yang membuat kode Anda lebih mudah dibaca oleh semua orang yang mengerjakannya.
+Kami menyarankan untuk selalu menggunakan import numpy sebagai np.
+Membaca kode contoh
+Jika Anda belum merasa nyaman membaca tutorial yang berisi banyak kode, Anda bisa melakukannya
+tidak tahu bagaimana menafsirkan blok kode yang terlihat seperti ini:
+>>> a = np.arange(6)
+>>> a2 = a[np.sumbu baru, :]
+>>> a2.bentuk
+(1, 6)
+Jika Anda belum familiar dengan gaya ini, sangat mudah untuk memahaminya. Jika Anda melihat >>>, Anda sedang mencari
+pada input, atau kode yang akan Anda masukkan. Segala sesuatu yang tidak memiliki >>> di depannya adalah
+output, atau hasil menjalankan kode Anda. Ini adalah gaya yang Anda lihat saat menjalankan python
+baris perintah, tetapi jika Anda menggunakan IPython, Anda mungkin melihat gaya yang berbeda. Perhatikan bahwa ini adalah
+bukan bagian dari kode dan akan menyebabkan kesalahan jika diketik atau ditempelkan ke shell Python. Itu bisa saja
+diketik atau ditempel dengan aman ke shell IPython; >>> diabaikan.
+Apa perbedaan antara daftar Python dan a
+Array NumPy?
+NumPy memberi Anda beragam cara cepat dan efisien untuk membuat array dan
+memanipulasi data numerik di dalamnya. Sedangkan daftar Python dapat berisi tipe data yang berbeda
+dalam satu daftar, semua elemen dalam array NumPy harus homogen. Itu
+operasi matematika yang dimaksudkan untuk dilakukan pada array akan sangat luar biasa
+tidak efisien jika susunannya tidak homogen.
+Mengapa menggunakan NumPy?
+Array NumPy lebih cepat dan lebih kompak daripada daftar Python. Sebuah array mengkonsumsi lebih sedikit
+Memori dan nyaman untuk digunakan. NumPy menggunakan lebih sedikit memori untuk menyimpan data dan itu
+menyediakan mekanisme untuk menentukan tipe data. Hal ini memungkinkan kode untuk dioptimalkan bahkan
+lebih jauh.
+Apa itu larik?
+Array adalah struktur data pusat perpustakaan NumPy. Array adalah kisi-kisi nilai dan itu
+berisi informasi
+tentang data mentah, cara menemukan suatu elemen, dan cara menafsirkan suatu
+elemen. Ini memiliki kisi elemen yang dapat diindeks dengan berbagai cara. Elemennya semuanya
+tipe yang sama, disebut sebagai array dtype.
+Sebuah array dapat diindeks dengan tupel bilangan bulat non-negatif, dengan boolean, dengan array lain, atau
+dengan bilangan bulat. Peringkat array adalah jumlah dimensi. Bentuk arraynya adalah a
+tupel bilangan bulat memberikan ukuran array sepanjang setiap dimensi.
+Salah satu cara kita menginisialisasi array NumPy adalah dari daftar Python, menggunakan daftar bersarang untuk dua atau
+data berdimensi lebih tinggi.
+Misalnya:
+>> a = np.array([1, 2, 3, 4, 5, 6])
+atau:
+>>> a = np.array([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]])
+Kita dapat mengakses elemen-elemen dalam array menggunakan tanda kurung siku. Saat Anda mengakses
+elemen, ingatlah bahwa pengindeksan di NumPy dimulai dari 0. Artinya jika Anda ingin mengakses
+elemen pertama dalam array Anda, Anda akan mengakses elemen "0".
+>>> mencetak(sebuah[0])
+[1 2 3 4]
+Informasi lebih lanjut tentang array
+Bagian ini mencakup array 1D, array 2D, ndarray, vektor, matriks
+Anda mungkin kadang-kadang mendengar array yang disebut sebagai “ndarray,” yang merupakan singkatan dari “N-
+susunan dimensi.” Array berdimensi N hanyalah sebuah array dengan jumlah dimensi berapa pun.
+Anda mungkin juga mendengar array 1-D, atau array satu dimensi, array 2-D, atau dua dimensi, dan seterusnya.
+Kelas NumPy ndarray digunakan untuk merepresentasikan matriks dan vektor. Vektor adalah sebuah array
+dengan dimensi tunggal (tidak ada perbedaan antara vektor baris dan kolom), sedangkan a
+matriks mengacu pada array dengan dua dimensi. Untuk array 3-D atau dimensi yang lebih tinggi, istilahnya
+tensor juga biasa digunakan.
+Apa sajakah atribut dari array?
+Array biasanya merupakan wadah berukuran tetap yang berisi item-item dengan tipe dan ukuran yang sama. Jumlah
+dimensi dan item dalam array ditentukan oleh bentuknya. Bentuk array adalah tupel
+bilangan bulat non-negatif yang menentukan ukuran setiap dimensi.
+Di NumPy, dimensi disebut sumbu. Artinya jika Anda memiliki array 2D seperti apa
+ini:
+[[0., 0., 0.],
+[1., 1., 1.]]
+Array Anda memiliki 2 sumbu. Sumbu pertama panjangnya 2 dan sumbu kedua panjangnya 3.
+Sama seperti objek container Python lainnya, konten array dapat diakses dan
+dimodifikasi dengan mengindeks atau mengiris array. Berbeda dengan objek container pada umumnya, arraynya berbeda
+dapat berbagi data yang sama, sehingga perubahan yang dilakukan pada satu array mungkin terlihat di array lain.
+Atribut array mencerminkan informasi intrinsik pada array itu sendiri. Jika Anda perlu mendapatkan, atau bahkan mengatur,
+properti array tanpa membuat array baru, Anda sering kali dapat mengakses array melaluinya
+atribut.
+Baca selengkapnya tentang atribut array di sini dan pelajari tentang objek array di sini.
+Cara membuat array dasar
+Bagian ini mencakup np.array(), np.zeros(), np.ones(), np.empty(), np.arange(),
+np.linspace(), tipe d
+Untuk membuat array NumPy, Anda dapat menggunakan fungsi np.array().
+Yang perlu Anda lakukan untuk membuat array sederhana adalah meneruskan daftar ke dalamnya. Jika Anda mau, Anda juga bisa
+tentukan jenis data dalam daftar Anda. Anda dapat menemukan informasi selengkapnya tentang tipe data di sini.
+>>> impor numpy sebagai np
+>>> a = np.array([1, 2, 3])
+Anda dapat memvisualisasikan array Anda dengan cara ini:
+Sadarilah bahwa visualisasi ini dimaksudkan untuk menyederhanakan ide dan memberi Anda pemahaman dasar
+konsep dan mekanika NumPy. Operasi array dan array jauh lebih rumit daripada
+ditangkap di sini!
+Selain membuat array dari rangkaian elemen, Anda dapat dengan mudah membuat array terisi
+dengan 0:
+>>> np.zeros(2)
+susunan([0., 0.])
+Atau array yang diisi dengan 1:
+>>> np.satu(2)
+susunan([1., 1.])
+Atau bahkan array kosong! Fungsi kosong membuat array yang konten awalnya acak
+dan tergantung pada keadaan memori. Alasan untuk menggunakan kosong di atas nol (atau sesuatu
+serupa) adalah kecepatan - pastikan untuk mengisi setiap elemen setelahnya!
+>>> # Buat array kosong dengan 2 elemen
+>>> np.kosong(2)
+array([3.14, 42. ]) # dapat bervariasi
+Anda dapat membuat array dengan berbagai elemen:
+>>> np.arange(4)
+susunan([0, 1, 2, 3])
+Dan bahkan array yang berisi rentang interval yang berjarak sama. Untuk melakukan ini, Anda akan menentukan
+angka pertama, angka terakhir, dan ukuran langkah.
+>>> np.arange(2, 9, 2)
+susunan([2, 4, 6, 8])
+Anda juga dapat menggunakan np.linspace() untuk membuat array dengan nilai yang diberi jarak linier dalam a
+interval tertentu:
+>>> np.linspace(0, 10, angka=5)
+larik([ 0. , 2.5, 5. , 7.5, 10. ])
+Menentukan tipe data Anda
+Meskipun tipe data defaultnya adalah floating point (np.float64), Anda dapat menentukan yang mana secara eksplisit
+tipe data yang anda inginkan dengan menggunakan kata kunci dtype.
+>> b = a.bentuk ulang(3, 2)
+>>> mencetak(b)
+[[0 1]
+ [2 3]
+ [4 5]]
+Dengan np.reshape, Anda dapat menentukan beberapa parameter opsional:
+>>> np.reshape(a, newshape=(1, 6), order='C')
+susunan([[0, 1, 2, 3, 4, 5]])
+a adalah array yang akan dibentuk ulang.
+newshape adalah bentuk baru yang Anda inginkan. Anda dapat menentukan bilangan bulat atau tupel bilangan bulat. Jika kamu
+tentukan bilangan bulat, hasilnya akan berupa array dengan panjang tersebut. Bentuknya harus kompatibel
+dengan bentuk aslinya.
+urutan: C berarti membaca/menulis elemen menggunakan urutan indeks seperti C, F berarti membaca/menulis
+elemen menggunakan urutan indeks seperti Fortran, A berarti membaca/menulis elemen dalam Fortran-
+seperti urutan indeks jika a adalah Fortran yang berdekatan dalam memori, urutan seperti C sebaliknya. (Ini adalah sebuah
+parameter opsional dan tidak perlu ditentukan.)
+Jika Anda ingin mempelajari lebih lanjut tentang tatanan C dan Fortran, Anda dapat membaca lebih lanjut tentang internal
+organisasi array NumPy di ​​sini. Pada dasarnya, perintah C dan Fortran berkaitan dengan caranya
+indeks sesuai dengan urutan penyimpanan array dalam memori. Di Fortran, saat bergerak
+melalui elemen array dua dimensi seperti yang disimpan dalam memori, indeks pertama adalah
+indeks yang paling cepat berubah. Saat indeks pertama berpindah ke baris berikutnya seiring perubahannya,
+matriks disimpan satu kolom pada satu waktu. Inilah sebabnya mengapa Fortran dianggap sebagai Jurusan Kolom
+bahasa. Sebaliknya, di C, indeks terakhir berubah paling cepat. Matriksnya adalah
+disimpan berdasarkan baris, menjadikannya bahasa Row-utama. Apa yang Anda lakukan untuk C atau Fortran bergantung pada
+apakah lebih penting mempertahankan konvensi pengindeksan atau tidak menyusun ulang data.
+Pelajari lebih lanjut tentang manipulasi bentuk di sini.
+Cara mengubah array 1D menjadi array 2D (cara
+tambahkan sumbu baru ke array)
+Bagian ini mencakup np.newaxis, np.expand_dims
+Anda dapat menggunakan np.newaxis dan np.expand_dims untuk meningkatkan dimensi yang sudah ada
+Himpunan.
+Menggunakan np.newaxis akan menambah dimensi array Anda sebanyak satu dimensi saat digunakan
+sekali. Artinya array 3D,
+dan seterusnya.
+Misalnya, jika Anda memulai dengan array ini:
+>>> a = np.array([1, 2, 3, 4, 5, 6])
+>>> a.bentuk
+(6,)
+Anda dapat menggunakan np.newaxis untuk menambahkan sumbu baru:
+>>> a2 = a[np.sumbu baru, :]
+>>> a2.bentuk
+(1, 6)
+Anda dapat secara eksplisit mengonversi array 1D dengan vektor baris atau vektor kolom menggunakan
+np.newaxis. Misalnya, Anda dapat mengonversi array 1D menjadi vektor baris dengan menyisipkan sumbu
+sepanjang dimensi pertama:
+>>> vektor_baris = a[np.sumbu baru, :]
+>>> baris_vektor.bentuk
+(1, 6)
+Atau, untuk vektor kolom, Anda bisa menyisipkan sumbu sepanjang dimensi kedua:
+>>> col_vector = a[:, np.newaxis]
+>>> col_vector.bentuk
+(6, 1)
+Anda juga dapat memperluas array dengan menyisipkan sumbu baru pada posisi tertentu dengan
+np.expand_dims.
+Misalnya, jika Anda memulai dengan array ini:
+>>> a = np.array([1, 2, 3, 4, 5, 6])
+>>> a.bentuk
+(6,)
+Anda dapat menggunakan np.expand_dims untuk menambahkan sumbu pada posisi indeks 1 dengan:
+>>> b = np.expand_dims(a, sumbu=1)
+>>> b.bentuk
+(6, 1)
+Anda dapat menambahkan sumbu pada posisi indeks 0 dengan:
+>>> c = np.expand_dims(a, sumbu=0)
+>>> c.bentuk
+(1, 6)
+Temukan informasi lebih lanjut tentang sumbu baru di sini dan expand_dims di expand_dims.
+Mengindeks dan mengiris
+Anda dapat mengindeks dan mengiris array NumPy dengan cara yang sama seperti Anda mengiris daftar Python.
+>>> data = np.array([1, 2, 3])
+>>> data[1]
+2
+>>> data[0:2]
+susunan([1, 2])
+>>> data[1:]
+susunan([2, 3])
+>>>data[-2:]
+susunan([2, 3])
+Anda dapat memvisualisasikannya seperti ini:
+Anda mungkin ingin mengambil bagian dari array Anda atau elemen array tertentu untuk digunakan lebih lanjut
+analisis atau operasi tambahan. Untuk melakukan itu, Anda perlu membuat subset, membagi, dan/atau mengindeks file Anda
+array.
+Jika Anda ingin memilih nilai dari array yang memenuhi kondisi tertentu, caranya mudah
+dengan NumPy.
+Misalnya, jika Anda memulai dengan array ini:
+>>> a = np.array([[1 , 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]])
+Anda dapat dengan mudah mencetak semua nilai dalam array yang kurang dari 5.
+>>> mencetak(sebuah[sebuah < 5])
+[1 2 3 4]
+Anda juga dapat memilih, misalnya, angka yang sama dengan atau lebih besar dari 5, dan menggunakannya
+kondisi untuk mengindeks array.
+>>> lima_up = (a >= 5)
+>>> cetak(a[lima_up])
+[5 6 7 8 9 10 11 12]
+Anda dapat memilih elemen yang habis dibagi 2:
+>>> habis dibagi_oleh_2 = a[a%2==0]
+>>> mencetak(dapat dibagi_oleh_2)
+[ 2 4 6 8 10 12]
+Atau Anda dapat memilih elemen yang memenuhi dua kondisi menggunakan & dan | operator:
+>>> c = a[(a > 2) & (a < 11)]
+>>> mencetak(c)
+[ 3 4 5 6 7 8 9 10]
+Anda juga dapat menggunakan operator logika & dan | untuk mengembalikan nilai boolean itu
+menentukan apakah nilai dalam array memenuhi kondisi tertentu atau tidak. Ini bisa bermanfaat dengan
+array yang berisi nama atau nilai kategorikal lainnya.
+>>> lima_up = (a > 5) | (sebuah == 5)
+>>> cetak(lima_up)
+[[Salah Salah Salah Salah]
+ [ Benar Benar Benar Benar]
+ [ Benar Benar Benar Benar]]
+Anda juga dapat menggunakan np.nonzero() untuk memilih elemen atau indeks dari array.
+Dimulai dengan array ini:
+>>> a = np.array([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]])
+Anda dapat menggunakan np.nonzero() untuk mencetak indeks elemen yang, misalnya, kurang dari 5:
+>> b = np.bukan nol(a < 5)
+>>> mencetak(b)
+(susunan([0, 0, 0, 0]), susunan([0, 1, 2, 3]))
+Dalam contoh ini, sejumlah array dikembalikan: satu untuk setiap dimensi. Susunan pertama
+mewakili indeks baris di mana nilai-nilai ini ditemukan, dan array kedua mewakili
+indeks kolom tempat nilai ditemukan.
+Jika Anda ingin membuat daftar koordinat tempat elemen berada, Anda dapat meng-zip arraynya,
+ulangi daftar koordinat, dan cetaklah. Misalnya:
+>>> daftar_koordinat_= daftar(zip(b[0], b[1]))
+>>> untuk koordinat di list_of_coordinates:
+... mencetak(koord)
+(0, 0)
+(0, 1)
+(0, 2)
+(0, 3)
+Anda juga dapat menggunakan np.nonzero() untuk mencetak elemen dalam array yang kurang dari 5 dengan:
+>>> mencetak(a[b])
+[1 2 3 4]
+Jika elemen yang Anda cari tidak ada dalam array, maka array indeks akan dikembalikan
+akan kosong. Misalnya:
+>>> not_there = np.nonzero(a == 42)
+>>> mencetak(tidak ada)
+(array([], dtype=int64), array([], dtype=int64))
+Pelajari lebih lanjut tentang pengindeksan dan pemotongan di sini dan di sini.
+Baca lebih lanjut tentang penggunaan fungsi bukan nol di: bukan nol.
+Cara membuat array dari data yang ada
+Bagian ini mencakup pemotongan dan pengindeksan, np.vstack(), np.hstack(), np.hsplit(),
+.lihat(), salin()
+Anda dapat dengan mudah membuat array baru dari bagian array yang sudah ada.
+Katakanlah Anda memiliki array ini:
+>>> a = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+Anda dapat membuat array baru dari bagian array Anda kapan saja dengan menentukan di mana Anda berada
+ingin mengiris array Anda.
+>>> arr1 = a[3:8]
+>>> arr1
+susunan([4, 5, 6, 7, 8])
+Di sini, Anda mengambil bagian array Anda dari posisi indeks 3 hingga posisi indeks 8.
+Anda juga dapat menumpuk dua array yang ada, baik secara vertikal maupun horizontal. Katakanlah Anda punya dua
+array, a1 dan a2:
+> a1 = np.array([[1, 1],
+... [2, 2]])
+>>> a2 = np.array([[3, 3],
+... [4, 4]])
+Anda dapat menumpuknya secara vertikal dengan vstack:
+>>> np.vstack((a1, a2))
+susunan([[1, 1],
+ [2, 2],
+ [3, 3],
+ [4, 4]])
+Atau susun secara horizontal dengan hstack:
+>>> np.hstack((a1, a2))
+susunan([[1, 1, 3, 3],
+ [2, 2, 4, 4]])
+Anda dapat membagi array menjadi beberapa array yang lebih kecil menggunakan hsplit. Anda dapat menentukan salah satunya
+jumlah array berbentuk sama yang akan dikembalikan atau kolom yang setelahnya pembagian harus dilakukan
+terjadi.
+Katakanlah Anda memiliki array ini:
+>>> x = np.arange(1, 25).membentuk kembali(2, 12)
+>>> x
+susunan([[ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+ [13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]])
+Jika Anda ingin membagi array ini menjadi tiga array yang bentuknya sama, jalankan:
+>>> np.hsplit(x, 3)
+ [susunan([[ 1, 2, 3, 4],
+ [13, 14, 15, 16]]), susunan([[ 5, 6, 7, 8],
+ [17, 18, 19, 20]]), susunan([[ 9, 10, 11, 12],
+ [21, 22, 23, 24]])]
+Jika Anda ingin membagi array setelah kolom ketiga dan keempat, jalankan:
+>>> np.hsplit(x, (3, 4))
+ [susunan([[ 1, 2, 3],
+ [13, 14, 15]]), susunan([[ 4],
+ [16]]), susunan([[ 5, 6, 7, 8, 9, 10, 11, 12],
+ [17, 18, 19, 20, 21, 22, 23, 24]])]
+Pelajari lebih lanjut tentang menumpuk dan memisahkan array di sini.
+Anda dapat menggunakan metode tampilan untuk membuat objek array baru yang terlihat pada data yang sama dengan
+array asli (salinan dangkal).
+Tampilan adalah konsep NumPy yang penting! Fungsi NumPy, serta operasi seperti pengindeksan
+dan mengiris, akan mengembalikan tampilan bila memungkinkan. Ini menghemat memori dan lebih cepat (tidak ada salinan
+datanya harus dibuat). Namun penting untuk menyadari hal ini - mengubah data dalam tampilan
+juga memodifikasi array asli!
+Katakanlah Anda membuat array ini:
+>>> a = np.array([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]])> a1 = np.array([[1, 1],
+... [2, 2]])
+>>> a2 = np.array([[3, 3],
+... [4, 4]])
+Anda dapat menumpuknya secara vertikal dengan vstack:
+>>> np.vstack((a1, a2))
+susunan([[1, 1],
+ [2, 2],
+ [3, 3],
+ [4, 4]])
+Atau susun secara horizontal dengan hstack:
+>>> np.hstack((a1, a2))
+susunan([[1, 1, 3, 3],
+ [2, 2, 4, 4]])
+Anda dapat membagi array menjadi beberapa array yang lebih kecil menggunakan hsplit. Anda dapat menentukan salah satunya
+jumlah array berbentuk sama yang akan dikembalikan atau kolom yang setelahnya pembagian harus dilakukan
+terjadi.
+Katakanlah Anda memiliki array ini:
+>>> x = np.arange(1, 25).membentuk kembali(2, 12)
+>>> x
+susunan([[ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+ [13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]])
+Jika Anda ingin membagi array ini menjadi tiga array yang bentuknya sama, jalankan:
+>>> np.hsplit(x, 3)
+ [susunan([[ 1, 2, 3, 4],
+ [13, 14, 15, 16]]), susunan([[ 5, 6, 7, 8],
+ [17, 18, 19, 20]]), susunan([[ 9, 10, 11, 12],
+ [21, 22, 23, 24]])]
+Jika Anda ingin membagi array setelah kolom ketiga dan keempat, jalankan:
+>>> np.hsplit(x, (3, 4))
+ [susunan([[ 1, 2, 3],
+ [13, 14, 15]]), susunan([[ 4],
+ [16]]), susunan([[ 5, 6, 7, 8, 9, 10, 11, 12],
+ [17, 18, 19, 20, 21, 22, 23, 24]])]
+Pelajari lebih lanjut tentang menumpuk dan memisahkan array di sini.
+Anda dapat menggunakan metode tampilan untuk membuat objek array baru yang terlihat pada data yang sama dengan
+array asli (salinan dangkal).
+Tampilan adalah konsep NumPy yang penting! Fungsi NumPy, serta operasi seperti pengindeksan
+dan mengiris, akan mengembalikan tampilan bila memungkinkan. Ini menghemat memori dan lebih cepat (tidak ada salinan
+datanya harus dibuat). Namun penting untuk menyadari hal ini - mengubah data dalam tampilan
+juga memodifikasi array asli!
+Katakanlah Anda membuat array ini:
+>>> a = np.array([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]])
